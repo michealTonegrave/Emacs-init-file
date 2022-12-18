@@ -115,16 +115,11 @@
 
 (global-set-key (kbd "C-x j") 'cider-jack-in)
 
-(defun clj-new-project ()
-  "Create a new clojure project and move the workspace to the
-main directory. The project will be created in the current directory
-so make sure to choose the right place!"
+(defun create-new-clojure-project ()
   (interactive)
   (let ((project-name (read-string "Enter project name: ")))
     (shell-command (concat "lein new app " project-name))
-    (cd (concat default-directory project-name))
-    (treemacs-create-workspace)
-    (treemacs-next-workspace)))
+    (treemacs-add-project-to-workspace project-name)))
 
-(global-set-key (kbd "C-c C-n") 'clj-new-project)
+(global-set-key (kbd "C-c C-n") 'create-new-clojure-project)
 (global-set-key (kbd "C-c cd") 'cd)
