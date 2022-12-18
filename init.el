@@ -78,7 +78,7 @@
 
 
 ;;processing configuration
-(setq processing-location "C:/Users/michm/Desktop/projectPhysics/processing-4.1.1/processing-java.exe")
+(setq processing-location "~/processing-java.exe")
 (use-package proced :ensure t)
 
 (global-set-key (kbd "C-c C-c") #'proced-eval-region)
