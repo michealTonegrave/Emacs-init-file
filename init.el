@@ -111,15 +111,20 @@
 (global-set-key (kbd "TAB") #'racer-complete-or-indent)
 
 
+;;custom bindings
 
+(global-set-key (kbd "C-x j") 'cider-jack-in)
 
+(defun clj-new-project ()
+  "Create a new clojure project and move the workspace to the
+main directory. The project will be created in the current directory
+so make sure to choose the right place!"
+  (interactive)
+  (let ((project-name (read-string "Enter project name: ")))
+    (shell-command (concat "lein new app " project-name))
+    (cd (concat default-directory project-name))
+    (treemacs-create-workspace)
+    (treemacs-next-workspace)))
 
-
-
-
-
-
-
-
-
-
+(global-set-key (kbd "C-c C-n") 'clj-new-project)
+(global-set-key (kbd "C-c cd") 'cd)
