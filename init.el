@@ -2,6 +2,7 @@
 (tool-bar-mode -1)
 (setq initial-scratch-message "")
 (setq visible-bell 1)
+(global-display-line-numbers-mode)
 
 ;;themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
@@ -123,3 +124,12 @@
 
 (global-set-key (kbd "C-c C-n") 'create-new-clojure-project)
 (global-set-key (kbd "C-c cd") 'cd)
+
+(use-package csharp-mode)
+
+(defun mkdir ()
+  (interactive)
+  (let ((name (read-string "Enter directory name: ")))
+    (shell-command (concat "mkdir " name ))))
+
+(global-set-key (kbd "C-c mkdir") 'mkdir)
